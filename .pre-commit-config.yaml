@@ -18,3 +18,11 @@ repos:
         stages: [commit-msg]
         entry: scripts/banned-words.py --commit-msg
         language: system
+      - id: plugin-test
+        name: claude plugin test
+        description: Run the mod's unit tests (hooks/*.test.tsx)
+        entry: claude plugin test .
+        language: system
+        pass_filenames: false
+        files: ^(hooks/|types/|\.claude-plugin/plugin\.json$)
+        stages: [pre-commit]

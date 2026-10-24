@@ -11,13 +11,43 @@ box-drawing art, using a patched copy of
 - **`/mermaid <file> [n]`**: draws a file's diagrams, or only its n-th, each
   with its section heading and line.
 - Both commands complete folder and markdown file names as you type the path,
-  and keep what they drew out of the conversation: the model reads one line.
+  and keep what they drew out of the conversation: the model reads one line
+  (see [Context and tokens](#context-and-tokens)).
 
 Styling follows the diagram's `classDef`, `class`, `:::`, `style` and
 `linkStyle` (fill, stroke, color, bold, italic); unstyled diagrams use your
 theme's colors. Flowchart shapes draw with their own outlines: rounded,
 stadium, circle, diamond, hexagon, subroutine, cylinder, parallelograms,
 trapezoids and asymmetric.
+
+## Context and tokens
+
+`/markdown` and `/mermaid` show you a file without adding it to Claude's
+context. A command's output normally becomes part of the conversation, so
+showing a 700-line document with a dozen diagrams that way would cost
+thousands of tokens on every later turn. These commands put only one line in
+the conversation instead:
+
+```
+Showed `docs/architecture.md` to the person: 709 lines, 11 Mermaid diagrams. Read the file to see its content. (view 242be727)
+```
+
+The file's text goes into the mod's session state, outside the
+conversation, under that view id. The command's row looks it up and draws the
+document or its diagrams from there.
+
+- **Claude sees only the summary line.** To discuss the document, Claude reads
+  the file itself, just as it would if you named the file.
+- **Each run is a snapshot.** A row keeps showing the file as it was when the
+  command ran. Run the command again to see the file as it is now.
+- **The drawing is never cached, only the text.** Rows are redrawn from the
+  saved text, so resizing the terminal or updating the mod affects old rows
+  too.
+- **Session state doesn't survive a resume.** In a resumed session a row whose
+  copy is gone is drawn from the file as it is now, with a dim note saying so.
+
+Mermaid in Claude's own replies is different: the reply's text is already in
+the conversation, and the mod only changes how it's drawn, not what's stored.
 
 ## Install
 
