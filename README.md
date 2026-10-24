@@ -40,10 +40,6 @@ In the desktop app, where `/plugin` does not run: click + next to the prompt
 box, then Plugins, Add marketplace with `pbnj/markdown-mermaid-docs`, then Add
 plugin.
 
-This repository is private: the install works only for people who can read it
-on GitHub and whose machine already holds a git credential for github.com (an
-SSH key, or `gh auth login` then `gh auth setup-git`).
-
 ## Limits
 
 - Links can't attach to pointed or curved sides; `:::` classes are read in
@@ -56,3 +52,8 @@ SSH key, or `gh auth login` then `gh auth setup-git`).
 
 `hooks/vendor/grok-mermaid/` is grok-mermaid 0.2.3, Apache-2.0 (see its
 `LICENSE`), with the changes listed in its `README.md`.
+
+## License
+
+Copyright 2026 Peter Benjamin. Licensed under the Apache License, Version 2.0;
+see [LICENSE](LICENSE).
