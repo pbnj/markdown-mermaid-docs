@@ -1,0 +1,5 @@
+{
+  "name": "markdown-mermaid-docs",
+  "owner": { "name": "pbnj" },
+  "plugins": [{ "name": "markdown-mermaid-docs", "source": "./" }]
+}

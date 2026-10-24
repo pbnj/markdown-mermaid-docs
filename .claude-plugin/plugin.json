@@ -1,0 +1,6 @@
+{
+  "name": "markdown-mermaid-docs",
+  "version": "0.2.0",
+  "description": "Draws ```mermaid blocks in Claude's replies as colored Unicode art (grok-mermaid); /markdown and /mermaid show a file's document or diagrams",
+  "types": "./types/index.d.ts"
+}
